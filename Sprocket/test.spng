@@ -1,0 +1,7 @@
+import "std.h"
+
+
+def main() -> int {
+    std.puts();
+    return 0;
+}
