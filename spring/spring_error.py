@@ -1,8 +1,8 @@
 import sys
 
 
-class DragonError(Exception):
-    debug = False
+class SpringError(Exception):
+    DEBUG = False
 
     def __init__(self, message, line, line_pos: (int, int)):
         self.message = message
@@ -10,7 +10,7 @@ class DragonError(Exception):
         self.line_pos = line_pos
 
     def finish(self, path: str, full_text: str):
-        if self.debug:
+        if self.DEBUG:
             raise self
         else:
             if full_text and self.line > 0:

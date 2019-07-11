@@ -1,7 +1,7 @@
-import "std.h"
+import "test.h"
 
 
 def main() -> int {
-    std.puts();
+    test.test();
     return 0;
 }

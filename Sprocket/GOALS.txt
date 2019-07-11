@@ -1,5 +1,0 @@
-
-
-* Three address code
-
-* Explicitly typed expressions

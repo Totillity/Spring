@@ -2,15 +2,14 @@ from __future__ import annotations
 
 from typing import List, Dict
 
-from dragon_ast import *
-from spring_token import Token
-from dragon_error import DragonError
-
+from spring.spring_ast import *
+from spring.spring_error import SpringError
+from spring.spring_token import Token
 
 ORDER = "AFTER scanner"
 
 
-class ParseError(DragonError):
+class ParseError(SpringError):
     pass
 
 
@@ -494,7 +493,8 @@ class Parser:
 
         return stream, expr
 
-    def parse_bin_op(self, stream: Stream, ops: List[str], lower) -> (Stream, Expr):
+    @staticmethod
+    def parse_bin_op(stream: Stream, ops: List[str], lower) -> (Stream, Expr):
         stream, expr = lower(stream)
         while stream.curr.type in ops:
             start = stream.curr.line, stream.curr.pos

@@ -1,15 +1,14 @@
+import re
 from dataclasses import dataclass, field
 from typing import List
 
-import re
-
-from spring_token import Token
-from dragon_error import DragonError
+from spring.spring_error import SpringError
+from spring.spring_token import Token
 
 ORDER = "START"
 
 
-class ScanningError(DragonError):
+class ScanningError(SpringError):
     pass
 
 
@@ -91,12 +90,6 @@ def scan(text: str) -> List[Token]:
         else:
             raise ScanningError(f"Expected {s!r}, got {text[state.pos:state.pos + len(s)]!r}", state.line,
                                 (state.line_pos, state.line_pos + len(s)))
-
-    def next_is(s):
-        if text[state.pos:state.pos + len(s)] == s:
-            return True
-        else:
-            return False
 
     def add_if_match(s):
         if text[state.pos:state.pos + len(s)] == s:

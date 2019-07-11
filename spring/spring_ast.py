@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List
 
 __all__ = ['Node',
 
-           'Type', 'Name', 'GetName', 'Generic',
+           'Type', 'Name', 'GetName', 'Generic', ''
            
            'Expr', 'Call', 'Literal', 'GetVar', 'BinOp',
            'GetAttr', 'SetAttr', 'SetVar', 'Cast', 'Grouping', 'New', 'Unary',
@@ -222,7 +222,7 @@ class GenericClass(Class):
 @dataclass()
 class Function(TopLevel):
     name: str
-    args: Dict[str, Type]
+    params: Dict[str, Type]
     ret: Type
     body: List[Stmt]
 
@@ -247,4 +247,4 @@ class Import(TopLevel):
 
 @dataclass()
 class Program(Node):
-    top_level: List[TopLevel]
+    top_levels: List[TopLevel]
